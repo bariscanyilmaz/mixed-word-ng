@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
+import { MixedWord } from '../models/word';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
+
+
+  mixedWord: MixedWord;
 
   ngOnInit(): void {
+    this.gameService.getWord().subscribe(r => {
+      if (r) {
+        this.mixedWord.originalWord = r.word;
+        this.mixedWord.mixedWord = r.word.split("").shuffle();
+        this.mixedWord.definiation = r.defination;
+      }
+
+    });
   }
 
+  getWord() {
+    this.gameService.nextWord();
+  }
 }
