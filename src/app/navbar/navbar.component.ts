@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
+  knownWords:number=0;
 
   ngOnInit(): void {
+
   }
+
+  
 
 }
