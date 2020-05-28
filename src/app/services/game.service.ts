@@ -6,7 +6,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class GameService {
 
-  constructor(private http:HttpClient) {
+  
+  constructor(private http: HttpClient) {
 
-   }
+  }
 }
