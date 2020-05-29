@@ -42,7 +42,7 @@ export class BoardComponent implements OnInit {
 
   checkWord(){
     if((this.mixedWord.mixedWord.join(''))===(this.mixedWord.originalWord)){
-      
+      this.gameService.increaseScore();
       this.gameService.nextWord();
     } 
   }

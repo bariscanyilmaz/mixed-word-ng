@@ -11,7 +11,8 @@ export class GameService {
 
 
   private words: Word[];
-  private word: BehaviorSubject<Word> = new BehaviorSubject<Word>(null);
+  private word = new BehaviorSubject<Word>(null);
+  private score=new BehaviorSubject<number>(0);
 
   constructor(private http: HttpClient) {
     this.getAll();
@@ -29,6 +30,10 @@ export class GameService {
 
   nextWord() {
     this.word.next(this.words.shift());
+  }
+
+  increaseScore(){
+    this.score.next(this.score.value+1)
   }
 
 }
