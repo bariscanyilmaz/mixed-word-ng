@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from '../services/game.service';
 import { MixedWord } from '../models/word';
 import { isUndefined, isNullOrUndefined } from 'util';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
@@ -10,30 +11,32 @@ import { isUndefined, isNullOrUndefined } from 'util';
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private gameService: GameService) { }
 
-  
-  mixedWord:MixedWord;
+  mixedWord: MixedWord=null;
+  width: number;
+
+  constructor(private gameService: GameService) {
+
+  }
+
 
   ngOnInit(): void {
     this.gameService.getWord().subscribe(r => {
-
       if (!isNullOrUndefined(r)) {
-        
-        this.mixedWord=new MixedWord(r.word,r.defination,r.word.split("").shuffle());
+        this.mixedWord = new MixedWord(r.word, r.defination, r.word.split("").shuffle());
+        this.width = this.mixedWord.mixedWord.length * 40;
       } else if (isUndefined(r)) {
         console.log('congratz it\'s done');
       }
-    }, err => {
-
-    }, () => {
-      this.getWord();
     });
-
   }
 
   getWord() {
     this.gameService.nextWord();
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.mixedWord.mixedWord, event.previousIndex, event.currentIndex);
   }
 
 }

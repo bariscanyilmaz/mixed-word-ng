@@ -7,6 +7,7 @@ import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from "@angular/common/http";
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule, 
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

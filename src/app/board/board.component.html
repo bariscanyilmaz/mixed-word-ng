@@ -1,5 +1,13 @@
 <button (click)="getWord()">
     Next
 </button>
+<div class="game-baord" *ngIf="mixedWord">
 
-<p *ngIf="mixedWord">{{mixedWord.mixedWord}},{{mixedWord.originalWord}},{{mixedWord.defination}}</p>
+    <h3 class="word-defination" >{{mixedWord.defination}}</h3>
+
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" [style.width.px]="width"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let letter of mixedWord.mixedWord" cdkDrag>{{letter}}</div>
+    </div>
+
+</div>
