@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
-  knownWords:number=0;
+  score: number = 0;
+
+  constructor(private gameService:GameService) { }
+
 
   ngOnInit(): void {
+    
+    this.gameService.getScore().subscribe(res=>{
+      this.score=res;
+    });
 
   }
 
-  
+
 
 }

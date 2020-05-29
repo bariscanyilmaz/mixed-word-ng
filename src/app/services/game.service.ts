@@ -36,4 +36,8 @@ export class GameService {
     this.score.next(this.score.value+1)
   }
 
+  getScore(){
+    return this.score.asObservable();
+  }
+
 }
