@@ -1,3 +1,10 @@
+$custom-orange:#ff9800;
+
+$btn-start:#cddc39;
+$btn-pass:#1976d2;
+$btn-restart:#66bb6a;
+
+
 .example-list {
   border: solid 1px #ccc;
   height: 60px;
@@ -15,7 +22,7 @@
   color: white;
   box-sizing: border-box;
   cursor: move;
-  background: #ff9800;
+  background:$custom-orange;
   font-size: 26px;
   line-height: 60px;
   text-align: center;
@@ -59,3 +66,27 @@
   margin-right: auto;
   text-align: center;
 }
+
+
+.actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-focus-indicator.mat-flat-button.mat-button-base{
+  color: white;
+}
+
+.btn-start{
+  background-color: $btn-start;
+}
+
+.btn-pass{
+background-color: $btn-pass;
+}
+
+.btn-restart{
+  background-color: $btn-restart;
+}
+

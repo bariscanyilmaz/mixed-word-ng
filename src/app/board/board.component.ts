@@ -15,6 +15,8 @@ export class BoardComponent implements OnInit {
   mixedWord: MixedWord=null;
   width: number;
 
+  status:'init'|'started'|'ended'="init";
+
   constructor(private gameService: GameService) {
 
   }
@@ -27,11 +29,17 @@ export class BoardComponent implements OnInit {
         this.width = this.mixedWord.mixedWord.length * 40;
       } else if (isUndefined(r)) {
         console.log('congratz it\'s done');
+        this.status='ended';
       }
     });
   }
 
   getWord() {
+    this.status="started";
+    this.gameService.nextWord();
+  }
+
+  pass(){
     this.gameService.nextWord();
   }
 
@@ -45,6 +53,10 @@ export class BoardComponent implements OnInit {
       this.gameService.increaseScore();
       this.gameService.nextWord();
     } 
+  }
+
+  restart(){
+    
   }
 
 }
