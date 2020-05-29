@@ -28,7 +28,6 @@ export class BoardComponent implements OnInit {
         this.mixedWord = new MixedWord(r.word, r.defination, r.word.split("").shuffle());
         this.width = this.mixedWord.mixedWord.length * 40;
       } else if (isUndefined(r)) {
-        console.log('congratz it\'s done');
         this.status='ended';
       }
     });

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Word } from '../models/word';
 import "../utility";
-import { of, BehaviorSubject } from 'rxjs';
+import { of, BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +12,21 @@ export class GameService {
 
   private words: Word[];
   private word = new BehaviorSubject<Word>(null);
-  private score=new BehaviorSubject<number>(0);
+  private score = new BehaviorSubject<number>(0);
 
   constructor(private http: HttpClient) {
     this.getAll();
   }
 
   getAll() {
-    this.http.get<Word[]>("/assets/words.json").subscribe(res => {
-      this.words = res.shuffle();
+    return new Promise((resolve, reject) => {
+      this.http.get<Word[]>("/assets/words.json").subscribe(res => {
+        this.words = res.shuffle();
+        resolve();
+      });
+      
     })
+
   }
 
   getWord() {
@@ -32,18 +37,16 @@ export class GameService {
     this.word.next(this.words.shift());
   }
 
-  increaseScore(){
-    this.score.next(this.score.value+1)
+  increaseScore() {
+    this.score.next(this.score.value + 1)
   }
 
-  getScore(){
+  getScore() {
     return this.score.asObservable();
   }
 
-  restart(){
-    this.score.next(0);
-    this.getAll();
-    this.nextWord();
+  restart() {
+    this.getAll().then(() => { this.nextWord(); this.score.next(0); });
   }
 
 }
