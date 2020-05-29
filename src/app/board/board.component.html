@@ -1,1 +1,5 @@
-<p>board works!</p>
+<button (click)="getWord()">
+    Next
+</button>
+
+<p *ngIf="mixedWord">{{mixedWord.mixedWord}},{{mixedWord.originalWord}},{{mixedWord.defination}}</p>

@@ -6,5 +6,12 @@ export class Word {
 export class MixedWord {
     originalWord:string;
     mixedWord:string[];
-    definiation:string;
+    defination:string;
+
+    constructor(originalWord:string,defination:string,mixedWord:string[]) {
+        this.originalWord=originalWord;
+        this.defination=defination;
+        this.mixedWord=mixedWord;
+    }
+    
 }
