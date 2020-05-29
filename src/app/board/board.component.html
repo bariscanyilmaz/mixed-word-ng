@@ -7,7 +7,7 @@
 
     <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" [style.width.px]="width"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let letter of mixedWord.mixedWord" cdkDrag>{{letter}}</div>
+        <div class="example-box" *ngFor="let letter of mixedWord.mixedWord" cdkDragLockAxis="x"  cdkDrag>{{letter}}</div>
     </div>
 
 </div>

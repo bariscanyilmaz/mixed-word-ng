@@ -37,6 +37,14 @@ export class BoardComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.mixedWord.mixedWord, event.previousIndex, event.currentIndex);
+    this.checkWord();
+  }
+
+  checkWord(){
+    if((this.mixedWord.mixedWord.join(''))===(this.mixedWord.originalWord)){
+      
+      this.gameService.nextWord();
+    } 
   }
 
 }
