@@ -34,7 +34,7 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  getWord() {
+  start() {
     this.status="started";
     this.gameService.nextWord();
   }
@@ -56,7 +56,8 @@ export class BoardComponent implements OnInit {
   }
 
   restart(){
-    
+    this.status='started';
+    this.gameService.restart();   
   }
 
 }

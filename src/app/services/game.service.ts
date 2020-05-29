@@ -40,4 +40,10 @@ export class GameService {
     return this.score.asObservable();
   }
 
+  restart(){
+    this.score.next(0);
+    this.getAll();
+    this.nextWord();
+  }
+
 }
