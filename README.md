@@ -1,6 +1,6 @@
 # MixedWordNg
 
-MixedWord project is web based quiz game. You can drag and letters and guess word with given description. In addition you can add more words [words.json](https://github.com/bariscanyilmaz/mixed-word-ng/blob/master/src/assets/words.json) file.
+MixedWord project is web based quiz game. You can drag letters and guess word with given description. In addition you can add more words [words.json](https://github.com/bariscanyilmaz/mixed-word-ng/blob/master/src/assets/words.json) file.
 
 ## Demo Page
 Demo is available on github-pages you can  
