@@ -123,6 +123,10 @@
               "devServerTarget": "mixed-word-ng:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }

@@ -20,7 +20,7 @@ export class GameService {
 
   getAll() {
     return new Promise((resolve, reject) => {
-      this.http.get<Word[]>("/assets/words.json").subscribe(res => {
+      this.http.get<Word[]>("assets/words.json").subscribe(res => {
         this.words = res.shuffle();
         resolve();
       });
